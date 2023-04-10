@@ -6,6 +6,9 @@ import com.kjb.dongbu.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class MemberStore {
 
@@ -15,5 +18,15 @@ public class MemberStore {
     public void save(Member member) {
         MemberJpo memberJpo = new MemberJpo(member);
         memberRepository.save(memberJpo);
+    }
+
+    public Member findById(long id) {
+        Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(id);
+        return optionalMemberJpo.map(MemberJpo::toDomain).orElse(null);
+    }
+
+    public List<Member> findMembersByName(String name) {
+        List<MemberJpo> memberJpos = memberRepository.findByNameContains(name);
+        return MemberJpo.toDomains(memberJpos);
     }
 }

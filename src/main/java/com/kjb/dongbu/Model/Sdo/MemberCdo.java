@@ -1,8 +1,6 @@
-package com.kjb.dongbu.Model.Cdo;
+package com.kjb.dongbu.Model.Sdo;
 
 import lombok.*;
-
-import javax.persistence.Id;
 
 @Getter
 @Setter
@@ -12,5 +10,4 @@ public class MemberCdo {
     private String address;
     private String name;
     private String phone;
-    private String status;
 }

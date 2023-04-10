@@ -2,35 +2,49 @@ package com.kjb.dongbu.Repository.Jpo;
 
 import com.kjb.dongbu.Model.Member;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name="member")
 public class MemberJpo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long m_code;
+    @Column(length = 200, nullable = false)
     private String address;
+    @Column(length = 20, nullable = true)
     private String name;
+    @Column(length = 20, nullable = true)
     private String phone;
+    @Column(length = 2)
     private String status;
     private long regidate;
 
     public MemberJpo(Member member) {
         BeanUtils.copyProperties(member, this);
+        this.regidate = System.currentTimeMillis();
+        this.status = "Y";
     }
 
     public Member toDomain() {
         Member member = new Member();
         BeanUtils.copyProperties(this, member);
         return member;
+    }
+
+    public static List<Member> toDomains(List<MemberJpo> memberJpos) {
+        return memberJpos.stream().map(MemberJpo::toDomain).collect(Collectors.toList());
     }
 
     public static MemberJpo Sample() {

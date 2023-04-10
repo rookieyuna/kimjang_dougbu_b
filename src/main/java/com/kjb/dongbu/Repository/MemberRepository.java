@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface MemberRepository extends JpaRepository<MemberJpo, Long> {
-    public List<MemberJpo> findByName(String name);
+    List<MemberJpo> findByNameContains(String name);
 }
 
 //https://goddaehee.tistory.com/209

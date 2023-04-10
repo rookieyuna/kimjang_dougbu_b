@@ -1,12 +1,10 @@
 package com.kjb.dongbu.Model;
 
-import com.kjb.dongbu.Model.Cdo.MemberCdo;
+import com.kjb.dongbu.Model.Sdo.MemberCdo;
 import lombok.*;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Getter
 @Setter
@@ -22,6 +20,6 @@ public class Member {
     private long regidate;
 
     public Member(MemberCdo memberCdo){
-        BeanUtils.copyProperties(memberCdo,this);
+        BeanUtils.copyProperties(memberCdo, this);
     }
 }
