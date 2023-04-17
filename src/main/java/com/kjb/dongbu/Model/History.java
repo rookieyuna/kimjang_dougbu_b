@@ -23,7 +23,7 @@ public class History {
     private String prepaid_yn;
     private int prepaid_price;
     private String debt_yn;
-    private String d_code;
+    private long d_code;
     private String card_yn;
     private int total;
 

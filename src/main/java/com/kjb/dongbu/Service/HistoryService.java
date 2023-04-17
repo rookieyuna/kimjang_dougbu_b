@@ -27,8 +27,8 @@ public class HistoryService {
         return history.getH_code();
     }
 
-    public List<History> findByBetweenDates (long sdate, long edate) {
-        return historyStore.findByBetweenDates(sdate, edate);
+    public List<History> findBySdateBetween (long sdate1, long sdate2) {
+        return historyStore.findBySdateBetween(sdate1, sdate2);
     }
     public List<History> findBySdate (long sdate) {
         return historyStore.findBySdate(sdate);

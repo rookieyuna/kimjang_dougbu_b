@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface HistoryRepository extends JpaRepository<HistoryJpo, Long> {
-    List<HistoryJpo> findByBetweenDates(long sdate, long edate);
+    List<HistoryJpo> findBySdateBetween(long sdate1, long sdate2);
     List<HistoryJpo> findBySdate(long sdate);
     List<HistoryJpo> findByMcode(long mcode);
 }

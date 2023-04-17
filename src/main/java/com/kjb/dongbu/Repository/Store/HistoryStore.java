@@ -26,8 +26,8 @@ public class HistoryStore {
         HistoryJpo historyJpo = new HistoryJpo(history);
         historyRepository.save(historyJpo);
     }
-    public List<History> findByBetweenDates(long sdate, long edate) {
-        List<HistoryJpo> historyJpos = historyRepository.findByBetweenDates(sdate, edate);
+    public List<History> findBySdateBetween(long sdate1, long sdate2) {
+        List<HistoryJpo> historyJpos = historyRepository.findBySdateBetween(sdate1, sdate2);
         return HistoryJpo.toDomains(historyJpos);
     }
     public List<History> findBySdate(long sdate) {

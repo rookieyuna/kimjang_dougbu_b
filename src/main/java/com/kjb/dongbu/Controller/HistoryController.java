@@ -29,8 +29,8 @@ public class HistoryController {
     }
 
     @GetMapping("")
-    public List<History> findByBetweenDates(@RequestParam long sdate, long edate) {
-        return historyService.findByBetweenDates(sdate, edate);
+    public List<History> findBySdateBetween(@RequestParam long sdate, long edate) {
+        return historyService.findBySdateBetween(sdate, edate);
     }
 
     @PutMapping("")

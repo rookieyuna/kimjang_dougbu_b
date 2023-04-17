@@ -36,8 +36,8 @@ public class HistoryJpo {
     private int prepaid_price;
     @Column(length = 2, nullable = true) // Default: "N"
     private String debt_yn;
-    @Column(length = 20, nullable = false)
-    private String d_code;
+    @Column(nullable = false)
+    private long d_code;
     @Column(length = 2, nullable = false) // Default: "N"
     private String card_yn;
     @Column(nullable = false)

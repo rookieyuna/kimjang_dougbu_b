@@ -15,6 +15,6 @@ public class HistoryCdo {
     private String prepaid_yn; // 선납여부
     private int prepaid_price; // 선납금액
     private String debt_yn; // 외상여부
-    private String d_code; // 외상코드
+    private long d_code; // 외상코드
     private String card_yn; // 카드여부
 }
