@@ -19,6 +19,9 @@ public class MemberService {
     public long registerMember(MemberCdo memberCdo){
         Member member = new Member(memberCdo);
 
+        member.setRegidate(System.currentTimeMillis());
+        member.setStatus("Y");
+
         memberStore.save(member);
         return member.getM_code();
     }
@@ -30,10 +33,15 @@ public class MemberService {
     public void modifyMember (MemberUdo memberUdo){
         Member member = memberStore.findById(memberUdo.getM_code());
 
-        if (member.getM_code() != 0) {
+        if (member.getM_code() == memberUdo.getM_code()) {
             member.setName(memberUdo.getName());
             member.setPhone(memberUdo.getPhone());
+            member.setStatus(memberUdo.getStatus());
         }
         memberStore.save(member);
+    }
+
+    public void removeMember (long m_code) {
+        memberStore.deleteById(m_code);
     }
 }

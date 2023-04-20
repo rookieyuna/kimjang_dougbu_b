@@ -20,13 +20,17 @@ public class MemberStore {
         memberRepository.save(memberJpo);
     }
 
-    public Member findById(long id) {
-        Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(id);
+    public Member findById(long m_code) {
+        Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(m_code);
         return optionalMemberJpo.map(MemberJpo::toDomain).orElse(null);
     }
 
     public List<Member> findMembersByName(String name) {
         List<MemberJpo> memberJpos = memberRepository.findByNameContains(name);
         return MemberJpo.toDomains(memberJpos);
+    }
+
+    public void deleteById(long m_code) {
+        memberRepository.deleteById(m_code);
     }
 }

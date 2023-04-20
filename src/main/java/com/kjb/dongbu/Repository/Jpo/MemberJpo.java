@@ -33,8 +33,6 @@ public class MemberJpo {
 
     public MemberJpo(Member member) {
         BeanUtils.copyProperties(member, this);
-        this.regidate = System.currentTimeMillis();
-        this.status = "Y";
     }
 
     public Member toDomain() {
