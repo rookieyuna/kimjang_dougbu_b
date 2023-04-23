@@ -1,24 +1,18 @@
-package com.kjb.dongbu.Model;
+package com.kjb.dongbu.Model.Sdo;
 
-import com.kjb.dongbu.Model.Sdo.ProductCdo;
 import com.kjb.dongbu.Model.Vo.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
-
-import javax.persistence.Id;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Product {
+@AllArgsConstructor
+public class ProductUdo {
 
-    @Id
     private String pdCode;
-    private String htCode;
-    private Integer label;
-    private OrderType orderType;
     private ProductType productType;
     private String productEtc;
     private RepairType repairType;
@@ -27,8 +21,4 @@ public class Product {
     private String color;
     private YesOrNo premiumYn;
     private Integer price;
-
-    public Product(ProductCdo productCdo){
-        BeanUtils.copyProperties(productCdo, this);
-    }
 }

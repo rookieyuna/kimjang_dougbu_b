@@ -1,6 +1,7 @@
 package com.kjb.dongbu.Repository.Jpo;
 
 import com.kjb.dongbu.Model.Product;
+import com.kjb.dongbu.Model.Vo.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,20 +24,32 @@ public class ProductJpo {
 
     @Id
     @Column(length = 20)
-    private String p_code;
-    @Column(nullable = false)
-    private Integer c_code;
+    private String pdCode;
+    @Column(length = 20)
+    private String htCode;
     @Column(nullable = false)
     private Integer label;
+    @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private String h_code;
+    private OrderType orderType;
+    @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private Integer order;
+    private ProductType productType;
+    @Column(length = 200)
+    private String productEtc;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private RepairType repairType;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private TextureType textureType;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private SizeType sizeType;
     @Column(length = 20)
     private String color;
-    @Column (length = 2)
-    @ColumnDefault("'N'")
-    private String premium_yn;
+    @Column (length = 10)
+    private YesOrNo premiumYn;
     @Column(nullable = false)
     private Integer price;
 

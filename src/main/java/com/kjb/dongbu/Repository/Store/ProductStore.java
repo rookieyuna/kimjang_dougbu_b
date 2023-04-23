@@ -20,17 +20,22 @@ public class ProductStore {
         productRepository.save(productJpo);
     }
 
-    public Product findById(long p_code) {
-        Optional<ProductJpo> optionalProductJpo = productRepository.findById(p_code);
-        return optionalProductJpo.map(ProductJpo::toDomain).orElse(null);
-    }
-
     public List<Product> findAll() {
         List<ProductJpo> productJpos = productRepository.findAll();
         return ProductJpo.toDomains(productJpos);
     }
 
-    public void deleteById(long p_code) {
-        productRepository.deleteById(p_code);
+    public Product findById(String pdCode) {
+        Optional<ProductJpo> optionalProductJpo = productRepository.findById(pdCode);
+        return optionalProductJpo.map(ProductJpo::toDomain).orElse(null);
+    }
+
+    public List<Product> findByHtCode(String htCode) {
+        List<ProductJpo> productJpos = productRepository.findByHtCode(htCode);
+        return ProductJpo.toDomains(productJpos);
+    }
+
+    public void deleteById(String pdCode) {
+        productRepository.deleteById(pdCode);
     }
 }
