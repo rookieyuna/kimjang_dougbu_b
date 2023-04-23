@@ -1,5 +1,6 @@
 package com.kjb.dongbu.Model.Sdo;
 
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.*;
 
 @Getter

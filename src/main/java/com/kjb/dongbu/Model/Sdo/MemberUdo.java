@@ -1,5 +1,6 @@
 package com.kjb.dongbu.Model.Sdo;
 
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.*;
 
 @Getter
@@ -7,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberUdo {
-    private long m_code;
+    private long memCode;
     private String name;
     private String phone;
-    private String Status;
+    private YesOrNo Status;
 }

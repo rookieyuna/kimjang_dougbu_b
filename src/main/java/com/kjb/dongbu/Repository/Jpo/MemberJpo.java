@@ -1,6 +1,7 @@
 package com.kjb.dongbu.Repository.Jpo;
 
 import com.kjb.dongbu.Model.Member;
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,15 +21,16 @@ public class MemberJpo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long m_code;
+    private long memCode;
     @Column(length = 200, nullable = false)
     private String address;
     @Column(length = 20, nullable = true)
     private String name;
     @Column(length = 20, nullable = true)
     private String phone;
-    @Column(length = 2)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10, nullable = false)
+    private YesOrNo status;
     private long regidate;
 
     public MemberJpo(Member member) {
@@ -46,6 +48,6 @@ public class MemberJpo {
     }
 
     public static MemberJpo Sample() {
-        return new MemberJpo(1,"가산동 112", "홍길동","010-1234-5678", "Y", System.currentTimeMillis());
+        return new MemberJpo(1,"가산동 112", "홍길동","010-1234-5678", YesOrNo.Yes, System.currentTimeMillis());
     }
 }

@@ -1,6 +1,7 @@
 package com.kjb.dongbu.Model;
 
 import com.kjb.dongbu.Model.Sdo.MemberCdo;
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.*;
 import org.springframework.beans.BeanUtils;
 
@@ -12,11 +13,11 @@ import javax.persistence.Id;
 public class Member {
 
     @Id
-    private long m_code;
+    private long memCode;
     private String address;
     private String name;
     private String phone;
-    private String status;
+    private YesOrNo status;
     private long regidate;
 
     public Member(MemberCdo memberCdo){

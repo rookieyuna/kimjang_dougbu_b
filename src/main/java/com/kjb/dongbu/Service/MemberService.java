@@ -3,6 +3,7 @@ package com.kjb.dongbu.Service;
 import com.kjb.dongbu.Model.Sdo.MemberCdo;
 import com.kjb.dongbu.Model.Member;
 import com.kjb.dongbu.Model.Sdo.MemberUdo;
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import com.kjb.dongbu.Repository.Store.MemberStore;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,10 @@ public class MemberService {
         Member member = new Member(memberCdo);
 
         member.setRegidate(System.currentTimeMillis());
-        member.setStatus("Y");
+        member.setStatus(YesOrNo.Yes);
 
         memberStore.save(member);
-        return member.getM_code();
+        return member.getMemCode();
     }
 
     public List<Member> findMembersByName (String name) {
@@ -31,9 +32,9 @@ public class MemberService {
     }
 
     public void modifyMember (MemberUdo memberUdo){
-        Member member = memberStore.findById(memberUdo.getM_code());
+        Member member = memberStore.findById(memberUdo.getMemCode());
 
-        if (member.getM_code() == memberUdo.getM_code()) {
+        if (member.getMemCode() == memberUdo.getMemCode()) {
             member.setName(memberUdo.getName());
             member.setPhone(memberUdo.getPhone());
             member.setStatus(memberUdo.getStatus());

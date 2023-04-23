@@ -20,8 +20,8 @@ public class MemberStore {
         memberRepository.save(memberJpo);
     }
 
-    public Member findById(long m_code) {
-        Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(m_code);
+    public Member findById(long memCode) {
+        Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(memCode);
         return optionalMemberJpo.map(MemberJpo::toDomain).orElse(null);
     }
 
@@ -30,7 +30,7 @@ public class MemberStore {
         return MemberJpo.toDomains(memberJpos);
     }
 
-    public void deleteById(long m_code) {
-        memberRepository.deleteById(m_code);
+    public void deleteById(long memCode) {
+        memberRepository.deleteById(memCode);
     }
 }
