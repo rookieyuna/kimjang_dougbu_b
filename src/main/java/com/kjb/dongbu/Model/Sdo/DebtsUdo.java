@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DebtsUdo {
-    private long d_code; // 외상코드
-    private long m_code; // 회원코드
-    private long payback_date; // 갚은 날짜
+    private long dtCode; // 외상코드
+    private long memCode; // 회원코드
+    private long paybackDate; // 갚은 날짜
     private int price; // 외상액
 }

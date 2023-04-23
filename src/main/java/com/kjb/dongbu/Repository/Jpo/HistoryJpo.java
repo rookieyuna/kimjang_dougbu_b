@@ -21,9 +21,9 @@ public class HistoryJpo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long h_code;
+    private long htCode;
     @Column(nullable = false)
-    private long m_code;
+    private long memCode;
     @Column(nullable = false)
     private long sdate;
     @Column(nullable = false)
@@ -31,24 +31,24 @@ public class HistoryJpo {
     @Column(nullable = true)
     private long rdate;
     @Column(length = 2, nullable = true) // Default: "N"
-    private String prepaid_yn;
+    private String prepaidYn;
     @Column(nullable = true)
-    private int prepaid_price;
+    private int prepaidPrice;
     @Column(length = 2, nullable = true) // Default: "N"
-    private String debt_yn;
+    private String debtYn;
     @Column(nullable = false)
-    private long d_code;
+    private long dtCode;
     @Column(length = 2, nullable = false) // Default: "N"
-    private String card_yn;
+    private String cardYn;
     @Column(nullable = false)
     private int total;
 
     public HistoryJpo(History history) {
         BeanUtils.copyProperties(history, this);
         this.sdate = System.currentTimeMillis();
-        this.prepaid_yn = "N";
-        this.debt_yn = "N";
-        this.card_yn = "N";
+        this.prepaidYn = "N";
+        this.debtYn = "N";
+        this.cardYn = "N";
     }
 
     public History toDomain() {

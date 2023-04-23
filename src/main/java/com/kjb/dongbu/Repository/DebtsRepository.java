@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface DebtsRepository extends JpaRepository<DebtsJpo, Long> {
-    List<DebtsJpo> findByPaybackdate(long paybackdate);
-    List<DebtsJpo> findByMcode(long mcode);
+    List<DebtsJpo> findByPaybackDate(long paybackDate);
+    List<DebtsJpo> findByMemCode(long memCode);
 }

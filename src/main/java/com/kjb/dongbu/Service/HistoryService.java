@@ -24,7 +24,7 @@ public class HistoryService {
         History history = new History(historyCdo);
 
         historyStore.save(history);
-        return history.getH_code();
+        return history.getHtCode();
     }
 
     public List<History> findBySdateBetween (long sdate1, long sdate2) {
@@ -33,21 +33,21 @@ public class HistoryService {
     public List<History> findBySdate (long sdate) {
         return historyStore.findBySdate(sdate);
     }
-    public List<History> findByMcode (long mcode) {
-        return historyStore.findByMcode(mcode);
+    public List<History> findByMemCode (long memCode) {
+        return historyStore.findByMemCode(memCode);
     }
 
     public void modifyHistory (HistoryUdo historyUdo){
-        History history = historyStore.findById(historyUdo.getH_code());
+        History history = historyStore.findById(historyUdo.getHtCode());
 
-        if (history.getH_code() == historyUdo.getH_code()) {
+        if (history.getHtCode() == historyUdo.getHtCode()) {
             history.setEdate(historyUdo.getEdate());
             history.setRdate(historyUdo.getRdate());
-            history.setPrepaid_yn(historyUdo.getPrepaid_yn());
-            history.setPrepaid_price(historyUdo.getPrepaid_price());
-            history.setDebt_yn(historyUdo.getDebt_yn());
-            history.setD_code(historyUdo.getD_code());
-            history.setCard_yn(historyUdo.getCard_yn());
+            history.setPrepaidYn(historyUdo.getPrepaidYn());
+            history.setPrepaidPrice(historyUdo.getPrepaidPrice());
+            history.setDebtYn(historyUdo.getDebtYn());
+            history.setDtCode(historyUdo.getDtCode());
+            history.setCardYn(historyUdo.getCardYn());
             history.setTotal(historyUdo.getTotal());
         }
         historyStore.save(history);

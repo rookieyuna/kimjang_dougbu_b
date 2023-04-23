@@ -15,16 +15,16 @@ import javax.persistence.Id;
 public class History {
 
     @Id
-    private long h_code;
-    private long m_code;
+    private long htCode;
+    private long memCode;
     private long sdate;
     private long edate;
     private long rdate;
-    private String prepaid_yn;
-    private int prepaid_price;
-    private String debt_yn;
-    private long d_code;
-    private String card_yn;
+    private String prepaidYn;
+    private int prepaidPrice;
+    private String debtYn;
+    private long dtCode;
+    private String cardYn;
     private int total;
 
     public History(HistoryCdo historyCdo){

@@ -34,8 +34,8 @@ public class HistoryStore {
         List<HistoryJpo> historyJpos = historyRepository.findBySdate(sdate);
         return HistoryJpo.toDomains(historyJpos);
     }
-    public List<History> findByMcode(long mcode) {
-        List<HistoryJpo> historyJpos = historyRepository.findByMcode(mcode);
+    public List<History> findByMemCode(long mcode) {
+        List<HistoryJpo> historyJpos = historyRepository.findByMemCode(mcode);
         return HistoryJpo.toDomains(historyJpos);
     }
 }

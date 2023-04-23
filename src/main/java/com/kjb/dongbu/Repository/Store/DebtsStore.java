@@ -26,12 +26,12 @@ public class DebtsStore {
         DebtsJpo debtsJpo = new DebtsJpo(debts);
         debtsRepository.save(debtsJpo);
     }
-    public List<Debts> findByPaybackdate(long paybackdate) {
-        List<DebtsJpo> debtsJpo = debtsRepository.findByPaybackdate(paybackdate);
+    public List<Debts> findByPaybackDate(long paybackDate) {
+        List<DebtsJpo> debtsJpo = debtsRepository.findByPaybackDate(paybackDate);
         return DebtsJpo.toDomains(debtsJpo);
     }
-    public List<Debts> findByMcode(long mcode) {
-        List<DebtsJpo> debtsJpo = debtsRepository.findByMcode(mcode);
+    public List<Debts> findByMemCode(long mcode) {
+        List<DebtsJpo> debtsJpo = debtsRepository.findByMemCode(mcode);
         return DebtsJpo.toDomains(debtsJpo);
     }
 }

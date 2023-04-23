@@ -21,11 +21,11 @@ public class DebtsJpo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long d_code;
+    private long dtCode;
     @Column(nullable = false)
-    private long m_code;
+    private long memCode;
     @Column(nullable = true)
-    private long payback_date;
+    private long paybackDate;
     @Column(nullable = false)
     private int price;
 

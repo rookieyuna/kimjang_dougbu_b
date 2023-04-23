@@ -20,21 +20,21 @@ public class DebtsService {
         Debts debts = new Debts(debtsCdo);
 
         debtsStore.save(debts);
-        return debts.getD_code();
+        return debts.getDtCode();
     }
 
-    public List<Debts> findByPaybackdate (long paybackdate) {
-        return debtsStore.findByPaybackdate(paybackdate);
+    public List<Debts> findByPaybackDate (long paybackDate) {
+        return debtsStore.findByPaybackDate(paybackDate);
     }
-    public List<Debts> findByMcode (long mcode) {
-        return debtsStore.findByMcode(mcode);
+    public List<Debts> findByMemCode (long memCode) {
+        return debtsStore.findByMemCode(memCode);
     }
 
     public void modifyDebts (DebtsUdo debtsUdo){
-        Debts debts = debtsStore.findById(debtsUdo.getD_code());
+        Debts debts = debtsStore.findById(debtsUdo.getDtCode());
 
-        if (debts.getD_code() == debtsUdo.getD_code()) {
-            debts.setPayback_date(debtsUdo.getPayback_date());
+        if (debts.getDtCode() == debtsUdo.getDtCode()) {
+            debts.setPaybackDate(debtsUdo.getPaybackDate());
             debts.setPrice(debtsUdo.getPrice());
         }
         debtsStore.save(debts);
