@@ -2,6 +2,7 @@ package com.kjb.dongbu.Repository.Jpo;
 
 import com.kjb.dongbu.Model.History;
 import com.kjb.dongbu.Model.Member;
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,7 @@ import java.util.stream.Collectors;
 public class HistoryJpo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long htCode;
+    private String htCode;
     @Column(nullable = false)
     private long memCode;
     @Column(nullable = false)
@@ -30,25 +30,25 @@ public class HistoryJpo {
     private long edate;
     @Column(nullable = true)
     private long rdate;
-    @Column(length = 2, nullable = true) // Default: "N"
-    private String prepaidYn;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 2, nullable = false)
+    private YesOrNo prepaidYn;
     @Column(nullable = true)
     private int prepaidPrice;
-    @Column(length = 2, nullable = true) // Default: "N"
-    private String debtYn;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 2, nullable = false)
+    private YesOrNo debtYn;
     @Column(nullable = false)
     private long dtCode;
-    @Column(length = 2, nullable = false) // Default: "N"
-    private String cardYn;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 2, nullable = false)
+    private YesOrNo cardYn;
     @Column(nullable = false)
     private int total;
 
     public HistoryJpo(History history) {
         BeanUtils.copyProperties(history, this);
         this.sdate = System.currentTimeMillis();
-        this.prepaidYn = "N";
-        this.debtYn = "N";
-        this.cardYn = "N";
     }
 
     public History toDomain() {

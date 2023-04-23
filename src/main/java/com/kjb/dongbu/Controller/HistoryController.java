@@ -24,7 +24,7 @@ public class HistoryController {
     }
 
     @PostMapping("")
-    public long registerHistory(@RequestBody HistoryCdo historyCdo) {
+    public String registerHistory(@RequestBody HistoryCdo historyCdo) {
         return historyService.registerHistory(historyCdo);
     }
 

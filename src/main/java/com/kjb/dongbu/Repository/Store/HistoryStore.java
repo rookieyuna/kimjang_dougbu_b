@@ -18,7 +18,7 @@ public class HistoryStore {
     @Autowired
     private HistoryRepository historyRepository;
 
-    public History findById(long id) {
+    public History findById(String id) {
         Optional<HistoryJpo> optionalHistoryJpo = historyRepository.findById(id);
         return optionalHistoryJpo.map(HistoryJpo::toDomain).orElse(null);
     }

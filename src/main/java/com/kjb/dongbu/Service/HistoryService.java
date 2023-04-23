@@ -10,6 +10,7 @@ import com.kjb.dongbu.Repository.Store.HistoryStore;
 import com.kjb.dongbu.Repository.Store.MemberStore;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -20,8 +21,12 @@ public class HistoryService {
         this.historyStore = historyStore;
     }
 
-    public long registerHistory(HistoryCdo historyCdo){
+    public String registerHistory(HistoryCdo historyCdo){
         History history = new History(historyCdo);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+
+        history.setSdate(System.currentTimeMillis());
+        history.setHtCode(simpleDateFormat.format(history.getSdate())+'_'+historyCdo.getMemCode());
 
         historyStore.save(history);
         return history.getHtCode();

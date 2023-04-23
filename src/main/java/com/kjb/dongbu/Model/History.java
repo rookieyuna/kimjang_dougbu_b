@@ -2,6 +2,7 @@ package com.kjb.dongbu.Model;
 
 import com.kjb.dongbu.Model.Sdo.HistoryCdo;
 import com.kjb.dongbu.Model.Sdo.MemberCdo;
+import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,16 +16,16 @@ import javax.persistence.Id;
 public class History {
 
     @Id
-    private long htCode;
+    private String htCode;
     private long memCode;
     private long sdate;
     private long edate;
     private long rdate;
-    private String prepaidYn;
+    private YesOrNo prepaidYn;
     private int prepaidPrice;
-    private String debtYn;
+    private YesOrNo debtYn;
     private long dtCode;
-    private String cardYn;
+    private YesOrNo cardYn;
     private int total;
 
     public History(HistoryCdo historyCdo){
