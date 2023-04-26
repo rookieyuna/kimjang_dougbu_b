@@ -19,10 +19,12 @@ public class ProductService {
         this.productStore = productStore;
     }
 
-    public String registerProduct(ProductCdo productCdo){
+    public String registerProduct(ProductCdo productCdo, String newHtCode){
         Product product = new Product(productCdo);
 
-        product.setPdCode(productCdo.getHtCode()+'_'+productCdo.getLabel());
+        product.setHtCode(newHtCode);
+
+        product.setPdCode(newHtCode+'_'+productCdo.getLabel());
 
         productStore.save(product);
         return product.getPdCode();

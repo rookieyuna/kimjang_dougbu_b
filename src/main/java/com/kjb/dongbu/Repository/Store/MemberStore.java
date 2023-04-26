@@ -20,6 +20,11 @@ public class MemberStore {
         memberRepository.save(memberJpo);
     }
 
+    public List<Member> findAll() {
+        List<MemberJpo> memberJpos = memberRepository.findAll();
+        return MemberJpo.toDomains(memberJpos);
+    }
+
     public Member findById(long memCode) {
         Optional<MemberJpo> optionalMemberJpo = memberRepository.findById(memCode);
         return optionalMemberJpo.map(MemberJpo::toDomain).orElse(null);

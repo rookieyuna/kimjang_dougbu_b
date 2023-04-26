@@ -17,7 +17,7 @@ public class Product {
     @Id
     private String pdCode;
     private String htCode;
-    private Integer label;
+    private int label;
     private OrderType orderType;
     private ProductType productType;
     private String productEtc;
@@ -26,7 +26,7 @@ public class Product {
     private SizeType sizeType;
     private String color;
     private YesOrNo premiumYn;
-    private Integer price;
+    private int price;
 
     public Product(ProductCdo productCdo){
         BeanUtils.copyProperties(productCdo, this);

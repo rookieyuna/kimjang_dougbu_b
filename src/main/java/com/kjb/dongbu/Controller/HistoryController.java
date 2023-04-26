@@ -30,7 +30,7 @@ public class HistoryController {
 
     @GetMapping("")
     public List<History> findBySdateBetween(@RequestParam long sdate, long edate) {
-        return historyService.findBySdateBetween(sdate, edate);
+        return historyService.findHistorysBySdateBetween(sdate, edate);
     }
 
     @PutMapping("")

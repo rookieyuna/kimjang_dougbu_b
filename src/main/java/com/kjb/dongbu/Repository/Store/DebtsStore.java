@@ -22,9 +22,11 @@ public class DebtsStore {
         Optional<DebtsJpo> optionalDebtsJpo = debtsRepository.findById(id);
         return optionalDebtsJpo.map(DebtsJpo::toDomain).orElse(null);
     }
-    public void save(Debts debts) {
+    public long save(Debts debts) {
         DebtsJpo debtsJpo = new DebtsJpo(debts);
-        debtsRepository.save(debtsJpo);
+        DebtsJpo newDebtsJpo = debtsRepository.save(debtsJpo);
+        return newDebtsJpo.getDtCode();
+
     }
     public List<Debts> findByPaybackDate(long paybackDate) {
         List<DebtsJpo> debtsJpo = debtsRepository.findByPaybackDate(paybackDate);

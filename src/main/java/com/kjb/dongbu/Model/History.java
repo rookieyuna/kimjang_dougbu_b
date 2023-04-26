@@ -31,4 +31,6 @@ public class History {
     public History(HistoryCdo historyCdo){
         BeanUtils.copyProperties(historyCdo, this);
     }
+
+
 }

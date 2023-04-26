@@ -20,5 +20,5 @@ public class ProductUdo {
     private SizeType sizeType;
     private String color;
     private YesOrNo premiumYn;
-    private Integer price;
+    private int price;
 }

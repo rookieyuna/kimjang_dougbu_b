@@ -23,10 +23,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping("")
-    public String registerProduct(@RequestBody ProductCdo productCdo) {
-        return productService.registerProduct(productCdo);
-    }
+//    @PostMapping("")
+//    public String registerProduct(@RequestBody ProductCdo productCdo) {
+//        return productService.registerProduct(productCdo);
+//    }
 
     @GetMapping("/all")
     public List<Product> findProducts() {

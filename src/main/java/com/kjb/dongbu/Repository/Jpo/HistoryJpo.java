@@ -31,24 +31,23 @@ public class HistoryJpo {
     @Column(nullable = true)
     private long rdate;
     @Enumerated(EnumType.STRING)
-    @Column(length = 2, nullable = false)
+    @Column(length = 10, nullable = false)
     private YesOrNo prepaidYn;
     @Column(nullable = true)
     private int prepaidPrice;
     @Enumerated(EnumType.STRING)
-    @Column(length = 2, nullable = false)
+    @Column(length = 10, nullable = false)
     private YesOrNo debtYn;
     @Column(nullable = false)
     private long dtCode;
     @Enumerated(EnumType.STRING)
-    @Column(length = 2, nullable = false)
+    @Column(length = 10, nullable = false)
     private YesOrNo cardYn;
     @Column(nullable = false)
     private int total;
 
     public HistoryJpo(History history) {
         BeanUtils.copyProperties(history, this);
-        this.sdate = System.currentTimeMillis();
     }
 
     public History toDomain() {

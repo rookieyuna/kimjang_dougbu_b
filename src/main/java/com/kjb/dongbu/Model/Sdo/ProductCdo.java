@@ -17,8 +17,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class ProductCdo {
 
-    private String htCode;
-    private Integer label;
+    private int label;
     private OrderType orderType;
     private ProductType productType;
     private String productEtc;
@@ -27,5 +26,5 @@ public class ProductCdo {
     private SizeType sizeType;
     private String color;
     private YesOrNo premiumYn;
-    private Integer price;
+    private int price;
 }

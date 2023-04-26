@@ -28,7 +28,7 @@ public class ProductJpo {
     @Column(length = 20)
     private String htCode;
     @Column(nullable = false)
-    private Integer label;
+    private int label;
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
     private OrderType orderType;
@@ -48,10 +48,10 @@ public class ProductJpo {
     private SizeType sizeType;
     @Column(length = 20)
     private String color;
-    @Column (length = 10)
+    @Column (length = 10, nullable = false)
     private YesOrNo premiumYn;
     @Column(nullable = false)
-    private Integer price;
+    private int price;
 
     public ProductJpo(Product product) {
         BeanUtils.copyProperties(product, this);

@@ -27,6 +27,14 @@ public class MemberService {
         return member.getMemCode();
     }
 
+    public List<Member> findMembers () {
+        return memberStore.findAll();
+    }
+
+    public Member findMemberById (long memCode) {
+        return memberStore.findById(memCode);
+    }
+
     public List<Member> findMembersByName (String name) {
         return memberStore.findMembersByName(name);
     }

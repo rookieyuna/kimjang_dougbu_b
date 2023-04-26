@@ -1,7 +1,6 @@
 package com.kjb.dongbu.Service;
 
 import com.kjb.dongbu.Model.Debts;
-import com.kjb.dongbu.Model.Sdo.DebtsCdo;
 import com.kjb.dongbu.Model.Sdo.DebtsUdo;
 import com.kjb.dongbu.Repository.Store.DebtsStore;
 import org.springframework.stereotype.Service;
@@ -16,11 +15,12 @@ public class DebtsService {
         this.debtsStore = debtsStore;
     }
 
-    public long registerDebts(DebtsCdo debtsCdo){
-        Debts debts = new Debts(debtsCdo);
+    public long registerDebts(long memCode, int debtsPrice){
+        Debts debts = new Debts();
+        debts.setPrice(debtsPrice);
+        debts.setMemCode(memCode);
 
-        debtsStore.save(debts);
-        return debts.getDtCode();
+        return debtsStore.save(debts);
     }
 
     public List<Debts> findByPaybackDate (long paybackDate) {
@@ -35,7 +35,6 @@ public class DebtsService {
 
         if (debts.getDtCode() == debtsUdo.getDtCode()) {
             debts.setPaybackDate(debtsUdo.getPaybackDate());
-            debts.setPrice(debtsUdo.getPrice());
         }
         debtsStore.save(debts);
     }
