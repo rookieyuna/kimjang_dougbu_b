@@ -18,14 +18,13 @@ public class DebtsStore {
     @Autowired
     private DebtsRepository debtsRepository;
 
-    public Debts findById(long id) {
+    public Debts findById(String id) {
         Optional<DebtsJpo> optionalDebtsJpo = debtsRepository.findById(id);
         return optionalDebtsJpo.map(DebtsJpo::toDomain).orElse(null);
     }
-    public long save(Debts debts) {
+    public void save(Debts debts) {
         DebtsJpo debtsJpo = new DebtsJpo(debts);
-        DebtsJpo newDebtsJpo = debtsRepository.save(debtsJpo);
-        return newDebtsJpo.getDtCode();
+        debtsRepository.save(debtsJpo);
 
     }
     public List<Debts> findByPaybackDate(long paybackDate) {

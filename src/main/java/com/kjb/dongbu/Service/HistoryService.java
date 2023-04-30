@@ -1,5 +1,6 @@
 package com.kjb.dongbu.Service;
 
+import com.kjb.dongbu.Model.Debts;
 import com.kjb.dongbu.Model.History;
 import com.kjb.dongbu.Model.Member;
 import com.kjb.dongbu.Model.Sdo.*;
@@ -44,15 +45,11 @@ public class HistoryService {
         //[Lamda 참고]int totalPrice = productCdos.stream().mapToInt((item -> item.getPrice())).sum();
         history.setTotal(totalPrice);
 
-        // 선납여부 확인 Todo: 선납여부가 필요한가?
-        history.setPrepaidYn(historyCdo.getPrepaidPrice() > 0 ? YesOrNo.Yes : YesOrNo.No);
-
         // 외상여부 확인 Todo: 외상테이블PK를 시퀀스보다는 접수내역PK(HtCode)로 동일하게 맞추는건 어떤지?
         int debtsPrice = totalPrice - historyCdo.getPrepaidPrice();
         if(debtsPrice > 0) {
             history.setDebtYn(YesOrNo.Yes);
-            long debtsId = debtsService.registerDebts(historyCdo.getMemCode(), debtsPrice);
-            history.setDtCode(debtsId);
+            debtsService.registerDebts(historyCdo.getMemCode(), debtsPrice, newHtCode);
         } else {
             history.setDebtYn(YesOrNo.No);
         }
@@ -75,12 +72,16 @@ public class HistoryService {
         History history = historyStore.findById(historyUdo.getHtCode());
 
         if (Objects.equals(history.getHtCode(), historyUdo.getHtCode())) {
-            history.setEdate(historyUdo.getEdate());
+            history.setEdate(history.getEdate() != 0 ? System.currentTimeMillis(): historyUdo.getEdate());
             history.setRdate(historyUdo.getRdate());
-            history.setPrepaidPrice(historyUdo.getPrepaidPrice());
-            history.setDtCode(historyUdo.getDtCode());
             history.setCardYn(historyUdo.getCardYn());
         }
+
+        if (historyUdo.getPaybackPrice() > 0) {
+            history.setDebtYn(YesOrNo.No);
+            debtsService.modifyDebts(history.getHtCode());
+        }
+
         historyStore.save(history);
     }
 }

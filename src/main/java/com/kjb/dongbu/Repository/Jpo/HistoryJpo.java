@@ -30,16 +30,11 @@ public class HistoryJpo {
     private long edate;
     @Column(nullable = true)
     private long rdate;
-    @Enumerated(EnumType.STRING)
-    @Column(length = 10, nullable = false)
-    private YesOrNo prepaidYn;
     @Column(nullable = true)
     private int prepaidPrice;
     @Enumerated(EnumType.STRING)
     @Column(length = 10, nullable = false)
     private YesOrNo debtYn;
-    @Column(nullable = false)
-    private long dtCode;
     @Enumerated(EnumType.STRING)
     @Column(length = 10, nullable = false)
     private YesOrNo cardYn;

@@ -20,8 +20,7 @@ import java.util.stream.Collectors;
 public class DebtsJpo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long dtCode;
+    private String dtCode;
     @Column(nullable = false)
     private long memCode;
     @Column(nullable = true)

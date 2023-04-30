@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-public interface DebtsRepository extends JpaRepository<DebtsJpo, Long> {
+public interface DebtsRepository extends JpaRepository<DebtsJpo, String> {
     List<DebtsJpo> findByPaybackDate(long paybackDate);
     List<DebtsJpo> findByMemCode(long memCode);
 }

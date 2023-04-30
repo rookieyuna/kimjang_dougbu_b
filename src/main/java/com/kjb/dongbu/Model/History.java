@@ -21,10 +21,8 @@ public class History {
     private long sdate;
     private long edate;
     private long rdate;
-    private YesOrNo prepaidYn;
     private int prepaidPrice;
     private YesOrNo debtYn;
-    private long dtCode;
     private YesOrNo cardYn;
     private int total;
 
