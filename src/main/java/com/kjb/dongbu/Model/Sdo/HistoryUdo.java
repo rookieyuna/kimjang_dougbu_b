@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HistoryUdo {
     private String htCode; //접수코드
+    private long sdate; // 맡긴날짜
     private long edate; // 찾아간날짜
     private long rdate; // 예약날짜
     private int paybackPrice; //외상지불액

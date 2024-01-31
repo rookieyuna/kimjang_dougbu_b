@@ -28,9 +28,9 @@ public class HistoryController {
         return historyService.registerHistory(historyCdo);
     }
 
-    @GetMapping("")
-    public List<History> findBySdateBetween(@RequestParam long sdate, long edate) {
-        return historyService.findHistorysBySdateBetween(sdate, edate);
+    @PostMapping("/work")
+    public List<History> findBySdateBetween(@RequestBody HistoryUdo historyUdo) {
+        return historyService.findHistorysBySdateBetween(historyUdo);
     }
 
     @PutMapping("")

@@ -58,8 +58,8 @@ public class HistoryService {
         return history.getHtCode();
     }
 
-    public List<History> findHistorysBySdateBetween (long sdate1, long sdate2) {
-        return historyStore.findBySdateBetween(sdate1, sdate2);
+    public List<History> findHistorysBySdateBetween (HistoryUdo historyUdo) {
+        return historyStore.findBySdateBetween(historyUdo.getSdate(), historyUdo.getEdate());
     }
     public List<History> findHistorysBySdate (long sdate) {
         return historyStore.findBySdate(sdate);
