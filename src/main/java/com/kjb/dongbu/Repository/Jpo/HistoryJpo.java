@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +41,12 @@ public class HistoryJpo {
     private YesOrNo cardYn;
     @Column(nullable = false)
     private int total;
+
+    //20240424 작업중...
+    @ManyToOne //JOIN
+    @JoinColumn(name = "memCode") //FK를 써준다.
+    private MemberJpo memberJpo;
+
 
     public HistoryJpo(History history) {
         BeanUtils.copyProperties(history, this);
