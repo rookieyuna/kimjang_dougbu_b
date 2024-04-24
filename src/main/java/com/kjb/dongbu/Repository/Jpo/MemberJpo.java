@@ -33,6 +33,10 @@ public class MemberJpo {
     private YesOrNo status;
     private long regidate;
 
+    //20240424 작업중...
+    @OneToMany(mappedBy = "member") //mappedBy는 연관관계의 주인을 나타낸다.
+    private List<HistoryJpo> historyJpos;
+
     public MemberJpo(Member member) {
         BeanUtils.copyProperties(member, this);
     }
