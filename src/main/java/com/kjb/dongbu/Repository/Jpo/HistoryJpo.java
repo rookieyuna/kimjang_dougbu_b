@@ -2,6 +2,7 @@ package com.kjb.dongbu.Repository.Jpo;
 
 import com.kjb.dongbu.Model.History;
 import com.kjb.dongbu.Model.Member;
+import com.kjb.dongbu.Model.Product;
 import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,9 +45,12 @@ public class HistoryJpo {
 
     //20240424 작업중...
     @ManyToOne //JOIN
-    @JoinColumn(name = "memCode") //FK를 써준다.
-    private MemberJpo memberJpo;
+    @JoinColumn(name = "member_memCode") //FK를 써준다.
+    private Member member;
 
+    @OneToMany(mappedBy = "history", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //mappedBy는 연관관계의 주인을 나타낸다.
+    @JoinColumn(name = "history_htCode")
+    private List<Product> products = new ArrayList<>();
 
     public HistoryJpo(History history) {
         BeanUtils.copyProperties(history, this);
