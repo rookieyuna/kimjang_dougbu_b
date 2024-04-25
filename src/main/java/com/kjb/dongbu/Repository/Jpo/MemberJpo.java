@@ -1,5 +1,6 @@
 package com.kjb.dongbu.Repository.Jpo;
 
+import com.kjb.dongbu.Model.History;
 import com.kjb.dongbu.Model.Member;
 import com.kjb.dongbu.Model.Vo.YesOrNo;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,8 +36,9 @@ public class MemberJpo {
     private long regidate;
 
     //20240424 작업중...
-    @OneToMany(mappedBy = "member") //mappedBy는 연관관계의 주인을 나타낸다.
-    private List<HistoryJpo> historyJpos;
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //mappedBy는 연관관계의 주인을 나타낸다.
+    @JoinColumn(name = "member_memCode")
+    private List<History> history = new ArrayList<>();
 
     public MemberJpo(Member member) {
         BeanUtils.copyProperties(member, this);
@@ -51,7 +54,7 @@ public class MemberJpo {
         return memberJpos.stream().map(MemberJpo::toDomain).collect(Collectors.toList());
     }
 
-    public static MemberJpo Sample() {
-        return new MemberJpo(1,"가산동 112", "홍길동","010-1234-5678", YesOrNo.Yes, System.currentTimeMillis());
-    }
+//    public static MemberJpo Sample() {
+//        return new MemberJpo(1,"가산동 112", "홍길동","010-1234-5678", YesOrNo.Yes, System.currentTimeMillis());
+//    }
 }

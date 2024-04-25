@@ -61,6 +61,12 @@ public class HistoryService {
     public List<History> findHistorysBySdateBetween (HistoryUdo historyUdo) {
         return historyStore.findBySdateBetween(historyUdo.getSdate(), historyUdo.getEdate());
     }
+
+    //20240425 추가
+    // https://www.springboot.kr/posts/spring/jpa-multiple-mapping-domain-join/   참고중,,,
+    public List<History> findBySdateBetween_Member_Products_MemCode (long sdate, long edate, long memCode) {
+        return historyStore.findBySdateBetween_Member_Products_MemCode(sdate, edate, memCode);
+    }
     public List<History> findHistorysBySdate (long sdate) {
         return historyStore.findBySdate(sdate);
     }

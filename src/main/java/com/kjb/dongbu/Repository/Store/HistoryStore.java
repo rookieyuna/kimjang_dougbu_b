@@ -30,6 +30,12 @@ public class HistoryStore {
         List<HistoryJpo> historyJpos = historyRepository.findBySdateBetween(sdate1, sdate2);
         return HistoryJpo.toDomains(historyJpos);
     }
+
+    //20240425 추가
+    public List<History> findBySdateBetween_Member_Products_MemCode(long sdate1, long sdate2, long mcode) {
+        List<HistoryJpo> historyJpos = historyRepository.findBySdateBetween_Member_Products_MemCode(sdate1, sdate2, mcode);
+        return HistoryJpo.toDomains(historyJpos);
+    }
     public List<History> findBySdate(long sdate) {
         List<HistoryJpo> historyJpos = historyRepository.findBySdate(sdate);
         return HistoryJpo.toDomains(historyJpos);

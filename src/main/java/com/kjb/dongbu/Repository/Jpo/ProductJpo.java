@@ -1,5 +1,7 @@
 package com.kjb.dongbu.Repository.Jpo;
 
+import com.kjb.dongbu.Model.History;
+import com.kjb.dongbu.Model.Member;
 import com.kjb.dongbu.Model.Product;
 import com.kjb.dongbu.Model.Vo.*;
 import lombok.AllArgsConstructor;
@@ -11,6 +13,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +55,7 @@ public class ProductJpo {
     private YesOrNo premiumYn;
     @Column(nullable = false)
     private int price;
+
 
     public ProductJpo(Product product) {
         BeanUtils.copyProperties(product, this);
